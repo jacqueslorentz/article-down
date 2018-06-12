@@ -1,0 +1,23 @@
+{
+  "name": "article-down",
+  "version": "1.0",
+  "description": "Parse an URL and convert the article content into markdown",
+  "keywords": ["article", "markdown", "url", "medium"],
+  "author": "jacqueslorentz",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint index.js bin.js && jest",
+    "bin": "node bin.js"
+  },
+  "dependencies": {
+    "readability-js": "^1.0.7",
+    "turndown": "^4.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "jest": "^23.1.0"
+  }
+}
