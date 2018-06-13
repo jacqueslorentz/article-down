@@ -2,7 +2,12 @@
   "name": "article-down",
   "version": "1.0",
   "description": "Parse an URL and convert the article content into markdown",
-  "keywords": ["article", "markdown", "url", "medium"],
+  "keywords": [
+    "article",
+    "markdown",
+    "url",
+    "medium"
+  ],
   "author": "jacqueslorentz",
   "license": "MIT",
   "main": "index.js",
@@ -11,7 +16,7 @@
     "bin": "node bin.js"
   },
   "dependencies": {
-    "readability-js": "^1.0.7",
+    "node-readability": "^3.0.0",
     "turndown": "^4.0.2"
   },
   "devDependencies": {

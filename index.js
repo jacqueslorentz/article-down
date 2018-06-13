@@ -1,4 +1,4 @@
-const readability = require('readability-js');
+const readability = require('node-readability');
 const Turndown = require('turndown');
 
 const escapeMarkdown = (str, index) => {
@@ -11,13 +11,15 @@ const escapeMarkdown = (str, index) => {
 };
 
 const parseMeta = (article, link) => {
+  const titleSeparatorsRegex = /(–|-|\|).*/;
+  const title = article.title.replace(titleSeparatorsRegex, '').trim();
   const header = escapeMarkdown(article.title);
-  const title = header.replace(/(–|-|\|).*/, '').trim();
-  const tmp = header.replace(title, '').trim();
+  const markdownTitle = header.replace(titleSeparatorsRegex, '').trim();
+  const tmp = header.replace(markdownTitle, '').trim();
   const source = (
     ['–', '-', '|'].includes(tmp.charAt(0)) ? tmp.substr(1).trim() : tmp
   );
-  return { title, source, link };
+  return { title, markdownTitle, source, link };
 };
 
 const addDomainToImage = (content, link) => {
@@ -26,7 +28,7 @@ const addDomainToImage = (content, link) => {
 };
 
 const parseArticle = (article, link) => {
-  const html = article.content.html();
+  const html = article.content;
   const turndownService = new Turndown();
   turndownService.addRule('pre', {
     filter: ['pre'],

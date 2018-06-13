@@ -51,7 +51,7 @@ Run Eslint to check syntax and Jest to run tests.
 
 ## Built With
 
-- [readability-js](https://github.com/Ournet/readability-js) - Extract article from a web page
+- [readability](https://github.com/luin/readability) - Extract article from a web page
 - [turndown](https://github.com/domchristie/turndown) - Turn HTML into Markdown
 
 ## License

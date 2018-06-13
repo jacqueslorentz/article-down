@@ -3,7 +3,9 @@ const articledown = require('./index');
 
 const writeMarkdownFile = data => new Promise((resolve, reject) => {
   const filename = `${data.title}.md`;
-  const content = `#${data.title}\n\n${data.source}\n\n${data.link}\n\n${data.article}`;
+  const content = `#${data.markdownTitle}\n\n${
+    data.source !== '' ? data.source + '\n\n' : ''
+  }${data.link}\n\n${data.article}`;
   fs.writeFile(filename, content, err => (err ? reject(err) : resolve()));
 });
 
