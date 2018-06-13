@@ -32,10 +32,21 @@ const articledown = require('article-down');
   }
 })();
 ```
-
-You can also use the binary:
+The function will return a promise which fulfilled this object:
+``` JavaScript
+{
+  title: 'Article title',
+  titleMarkdown: 'Article title in Markdown',
+  source: 'Article source (author and/or website)',
+  sourceMarkdown: 'Article source in Markdown',
+  link: 'Article link',
+  article: 'Article content in Markdown',
+}
 ```
-node bin.js
+
+You can also use the binary, it will save the article in a Markdown file:
+```
+node bin.js 'YOUR-ARTICLE-URL'
 ```
 
 ## Running the tests

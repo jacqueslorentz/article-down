@@ -11,15 +11,16 @@ const escapeMarkdown = (str, index) => {
 };
 
 const parseMeta = (article, link) => {
-  const titleSeparatorsRegex = /(–|-|\|).*/;
-  const title = article.title.replace(titleSeparatorsRegex, '').trim();
-  const header = escapeMarkdown(article.title);
-  const markdownTitle = header.replace(titleSeparatorsRegex, '').trim();
-  const tmp = header.replace(markdownTitle, '').trim();
+  const title = article.title.replace(/(–|-|\|).*/, '').trim();
+  const tmp = article.title.replace(title, '').trim();
   const source = (
     ['–', '-', '|'].includes(tmp.charAt(0)) ? tmp.substr(1).trim() : tmp
   );
-  return { title, markdownTitle, source, link };
+  return {
+    title, source, link,
+    titleMarkdown: escapeMarkdown(title),
+    sourceMarkdown: escapeMarkdown(source),
+  };
 };
 
 const addDomainToImage = (content, link) => {
