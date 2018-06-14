@@ -17,7 +17,9 @@ const parseMeta = (article, link) => {
     ['–', '-', '|'].includes(tmp.charAt(0)) ? tmp.substr(1).trim() : tmp
   );
   return {
-    title, source, link,
+    title,
+    source,
+    link,
     titleMarkdown: escapeMarkdown(title),
     sourceMarkdown: escapeMarkdown(source),
   };

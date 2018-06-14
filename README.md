@@ -46,7 +46,7 @@ The function will return a promise which fulfilled this object:
 
 You can also use the binary, it will save the article in a Markdown file:
 ```
-node bin.js 'YOUR-ARTICLE-URL'
+node bin.js 'YOUR-ARTICLE-URL' [-d 'output directory'] [-o 'filename']
 ```
 
 ## Running the tests
