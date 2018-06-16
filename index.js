@@ -43,11 +43,16 @@ const parseArticle = (article, link) => {
 };
 
 module.exports = link => new Promise((resolve, reject) => {
-  readability(link, (error, article) => {
+  if (!link || typeof link !== 'string' || link.length === 0) {
+    return reject(new Error('Bad argument sent, must be a non empty string'));
+  }
+
+  return readability(link, (error, article) => {
     if (error) {
-      reject(error);
-      return;
+      return reject(error);
+    } else if (!article.content) {
+      return reject(new Error(`Url ${link} is not found`));
     }
-    resolve(parseArticle(article, link));
+    return resolve(parseArticle(article, link));
   });
 });

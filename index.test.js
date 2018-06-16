@@ -1,9 +1,32 @@
 const articledown = require('./index');
-/*
-test('Send null link', async () => {
-  return expect(articledown(null)).rejects.toThrowError(TypeError);
-});*/
+
+const BAD_ARG_ERROR = 'Bad argument sent, must be a non empty string';
+const BAD_URL_ERROR = url => `Url ${url} is not found`;
+
 test('Send good url', async () => {
-  const testURL = 'https://medium.com/s/story/i-am-fine-a19b36867a33';
-  return expect(await articledown(testURL));
-})
+  const url = 'https://medium.com/s/story/i-am-fine-a19b36867a33';
+  return expect(await articledown(url)).toMatchObject({
+    link: 'https://medium.com/s/story/i-am-fine-a19b36867a33',
+    source: 'Member Feature Stories – Medium',
+    sourceMarkdown: 'Member Feature Stories – Medium',
+    title: 'I Am Fine',
+    titleMarkdown: 'I Am Fine',
+  });
+});
+
+test('Send bad url', async () => {
+  const badurl = 'badurl';
+  return expect(articledown(badurl)).rejects.toThrowError(BAD_URL_ERROR(badurl));
+});
+
+test('Send null url', async () => {
+  return expect(articledown(null)).rejects.toThrowError(BAD_ARG_ERROR);
+});
+
+test('Send object as url', async () => {
+  return expect(articledown({})).rejects.toThrowError(BAD_ARG_ERROR);
+});
+
+test('Send empty url', async () => {
+  return expect(articledown('')).rejects.toThrowError(BAD_ARG_ERROR);
+});
