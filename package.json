@@ -1,6 +1,6 @@
 {
   "name": "article-down",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Parse an URL and convert the article content into markdown",
   "keywords": [
     "article",
