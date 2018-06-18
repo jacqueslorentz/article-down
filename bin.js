@@ -4,7 +4,7 @@ const articledown = require('./index');
 
 const writeMarkdownFile = (data, args) => new Promise((resolve, reject) => {
   const filename = args.file || `${data.title}.md`;
-  const content = `#${data.titleMarkdown}\n\n${
+  const content = `# ${data.titleMarkdown}\n\n${
     data.sourceMarkdown !== '' ? `${data.sourceMarkdown}\n\n` : ''
   }${data.link}\n\n${data.article}`;
 
