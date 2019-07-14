@@ -18,12 +18,12 @@
   "dependencies": {
     "minimist": "^1.2.0",
     "node-readability": "^3.0.0",
-    "turndown": "^4.0.2"
+    "turndown": "^5.0.3"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.12.0",
-    "jest": "^23.1.0"
+    "eslint": "^6.0.1",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0",
+    "jest": "^24.8.0"
   }
 }
