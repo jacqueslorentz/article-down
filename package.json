@@ -16,7 +16,7 @@
     "bin": "node bin.js"
   },
   "dependencies": {
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.2",
     "node-readability": "^3.0.0",
     "turndown": "^5.0.3"
   },
