@@ -4,16 +4,14 @@ const articledown = require('./index');
 
 const writeMarkdownFile = (data, args) => new Promise((resolve, reject) => {
   const filename = args.file || `${data.title}.md`;
-  const content = `# ${data.titleMarkdown}\n\n${
-    data.sourceMarkdown !== '' ? `${data.sourceMarkdown}\n\n` : ''
-  }${data.link}\n\n${data.article}`;
+  const content = `# ${data.titleMarkdown}\n\n${data.link}\n\n${data.article}`;
 
   try {
     fs.mkdirSync(args.dir);
   } catch (err) {
     if (err.code !== 'EEXIST') throw err;
   }
-  fs.writeFile(args.dir + filename, content, err => (err ? reject(err) : resolve()));
+  fs.writeFile(args.dir + filename, content, (err) => (err ? reject(err) : resolve()));
 });
 
 const usage = () => {

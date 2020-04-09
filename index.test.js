@@ -4,11 +4,9 @@ const BAD_ARG_ERROR = 'Bad argument sent, must be a non empty string';
 const BAD_URL_ERROR = url => `Url ${url} is not found`;
 
 test('Send good url', async () => {
-  const url = 'https://medium.com/s/story/i-am-fine-a19b36867a33';
+  const url = 'https://medium.com/@johndevore/i-am-fine-a19b36867a33';
   return expect(await articledown(url)).toMatchObject({
-    link: 'https://medium.com/s/story/i-am-fine-a19b36867a33',
-    source: 'Member Feature Stories – Medium',
-    sourceMarkdown: 'Member Feature Stories – Medium',
+    link: 'https://medium.com/@johndevore/i-am-fine-a19b36867a33',
     title: 'I Am Fine',
     titleMarkdown: 'I Am Fine',
   });

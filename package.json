@@ -16,14 +16,14 @@
     "bin": "node bin.js"
   },
   "dependencies": {
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.5",
     "node-readability": "^3.0.0",
-    "turndown": "^5.0.3"
+    "turndown": "^6.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.0.1",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.0",
-    "jest": "^24.8.0"
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^25.3.0"
   }
 }

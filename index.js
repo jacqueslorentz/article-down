@@ -11,17 +11,11 @@ const escapeMarkdown = (str, index) => {
 };
 
 const parseMeta = (article, link) => {
-  const title = article.title.replace(/(–|-|\|).*/, '').trim();
-  const tmp = article.title.replace(title, '').trim();
-  const source = (
-    ['–', '-', '|'].includes(tmp.charAt(0)) ? tmp.substr(1).trim() : tmp
-  );
+  const { title } = article;
   return {
     title,
-    source,
     link,
     titleMarkdown: escapeMarkdown(title),
-    sourceMarkdown: escapeMarkdown(source),
   };
 };
 
@@ -35,14 +29,14 @@ const parseArticle = (article, link) => {
   const turndownService = new Turndown();
   turndownService.addRule('pre', {
     filter: ['pre'],
-    replacement: content => content.replace(/\n\n/g, ''),
+    replacement: (content) => content.replace(/\n\n/g, ''),
   });
   const content = addDomainToImage(turndownService.turndown(html), link);
   const meta = parseMeta(article, link);
   return { article: content, ...meta };
 };
 
-module.exports = link => new Promise((resolve, reject) => {
+module.exports = (link) => new Promise((resolve, reject) => {
   if (!link || typeof link !== 'string' || link.length === 0) {
     return reject(new Error('Bad argument sent, must be a non empty string'));
   }
@@ -50,7 +44,8 @@ module.exports = link => new Promise((resolve, reject) => {
   return readability(link, (error, article) => {
     if (error) {
       return reject(error);
-    } else if (!article.content) {
+    }
+    if (!article.content) {
       return reject(new Error(`Url ${link} is not found`));
     }
     return resolve(parseArticle(article, link));
